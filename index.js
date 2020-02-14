@@ -1,5 +1,5 @@
-// index.js
-const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require("./iss");
+// // index.js
+// const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require("./iss");
 
 // fetchMyIP((error, ip) => {
 //   if (error) {
@@ -42,5 +42,16 @@ nextISSTimesForMyLocation((error, passTimes) => {
     return console.log("It didn't work!", error);
   }
   // success, print out the deets!
-  console.log(passTimes);
+  printISSInfo(passTimes);
+  // console.log(passTimes);
 });
+
+const printISSInfo = function(passTimes) {
+  var currentDate = new Date();
+  console.log(`Current Time is: ${currentDate}`);
+  for (const obj of passTimes) {
+    var date = new Date(parseInt(obj.risetime) * 1000);
+    // console.log(date.toString());
+    console.log(`Next pass at ${date} for ${obj.duration} seconds!`);
+  }
+};

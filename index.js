@@ -47,10 +47,10 @@ nextISSTimesForMyLocation((error, passTimes) => {
 });
 
 const printISSInfo = function(passTimes) {
-  var currentDate = new Date();
+  let currentDate = new Date();
   console.log(`Current Time is: ${currentDate}`);
   for (const obj of passTimes) {
-    var date = new Date(parseInt(obj.risetime) * 1000);
+    let date = new Date(parseInt(obj.risetime) * 1000);
     // console.log(date.toString());
     console.log(`Next pass at ${date} for ${obj.duration} seconds!`);
   }
